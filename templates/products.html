@@ -13,6 +13,11 @@
           <td>Category</td>
           <td>Price</td>
         </tr>
+        {% for product in products %}
+        <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.category}}</td>
+        </tr>
       </table>
     </div>
   </div>
