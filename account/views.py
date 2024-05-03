@@ -1,14 +1,19 @@
 from django.shortcuts import render
-from . models import Customer
-from . models import Products
+from . models import *
+
 
 # Create your views here.
 def home(request):
+    orders = Order.objects.all()
+    customers = Customer.objects.all()
+    
+    context = {'orders': orders, 'customers': customers}
+    
     return render(request, 'dashboard.html')
 
 def products(request):
-    produtcs = Products.objects.all()
-    return render(request, 'products.html')
+    products = Product.objects.all()
+    return render(request, 'products.html', {'products': products})
 
 def customer(request):
     customers = Customer.objects.all()
