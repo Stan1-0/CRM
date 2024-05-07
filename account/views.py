@@ -26,7 +26,8 @@ def customer(request, pk):
     context = {'customer': customer, 'orders':orders, 'order_count':order_count}
     return render(request, 'customer.html', context)
 
-def createOrder(request):
+def createOrder(request, pk):
+    customer = Customer.objects.get(id=pk)
     form = OrderForm()
     if request.method == 'POST':
         #print('printing POST:', request.POST)
@@ -55,5 +56,6 @@ def deleteOrder(request, pk):
     if request.method == 'POST':
         order.delete()
         return redirect('/')
+    
     context={'item':order}
     return render(request, 'delete.html', context)
