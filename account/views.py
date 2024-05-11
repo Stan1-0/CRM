@@ -34,7 +34,7 @@ def createOrder(request, pk):
     #form = OrderForm(initial={'customer': customer})
     if request.method == 'POST':
         #print('printing POST:', request.POST)
-        form = OrderForm(request.POST)
+        form = OrderForm(request.POST, instance=customer)
         if form.is_valid():
             form.save()
             return redirect('/')
